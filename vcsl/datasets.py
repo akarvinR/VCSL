@@ -147,6 +147,7 @@ class VideoFramesDataset(Dataset):
         video_idx, frame_idx = self.offset_to_index(item)
 
         vid, vdir, _ = self.video_list[video_idx]
+        
         path = self.id_to_key_fn(vdir, frame_idx)
         path = os.path.join(self.root, path) if self.root else path
         value = self.reader.read(path)
