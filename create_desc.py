@@ -42,7 +42,7 @@ loader = DataLoader(dataset, collate_fn=lambda x: x,
 
 recommended_weight_name = 'isc_ft_v107'
 model, preprocessor = create_model(weight_name=recommended_weight_name, device=args.acc)
-
+model = model.cuda()
 i = 0
 query_desc = []
 qry_timestamps = []
@@ -55,8 +55,7 @@ for batch_data in loader:
     print(i)
     i += len(video_ids)
     images = torch.Tensor(list(images)) 
-  
-    print(images.shape)
+    images = images.cuda()
 
     y = model(images)
 
