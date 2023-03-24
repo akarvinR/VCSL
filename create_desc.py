@@ -54,7 +54,9 @@ for batch_data in loader:
 
     print(i)
     i += len(video_ids)
-
+    images = torch.Tensor(list(images)) 
+  
+    print(images.shape)
 
     y = model(images)
 
