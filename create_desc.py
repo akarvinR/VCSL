@@ -20,7 +20,7 @@ parser.add_argument("-batchsize", "--batchsize", help = "")
 parser.add_argument("-numwork", "--numwork", help = "")
 args = parser.parse_args() 
 """
- python3 --outputfile query_desc.npz --csvfile ../data/test/query/query.csv --cc gpu --batchsize 5 --numwork 1
+ python create_desc.py --outputfile query_desc.npz --csvfile ../data/test/query/query.csv --acc cuda --batchsize 5 --numwork 1
 """
 df = pd.read_csv(args.csvfile)
 
@@ -54,10 +54,7 @@ for batch_data in loader:
 
     print(i)
     i += len(video_ids)
-    images = torch.Tensor(list(images)) 
-    t = images.unsqueeze(0)
 
-    print(images.shape)
 
     y = model(images)
 
