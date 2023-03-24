@@ -19,6 +19,9 @@ parser.add_argument("-acc", "--acc", help = "cpu or gpu")
 parser.add_argument("-batchsize", "--batchsize", help = "")
 parser.add_argument("-numwork", "--numwork", help = "")
 args = parser.parse_args() 
+"""
+ python3 --outputfile query_desc.npz --csvfile ../data/test/query/query.csv --cc gpu --batchsize 5 --numwork 1
+"""
 df = pd.read_csv(args.csvfile)
 
 data_list = df[['uuid', 'path', 'frame_count']].values.tolist()
@@ -60,7 +63,7 @@ for batch_data in loader:
 
     query_desc += y.tolist()
     qry_video_ids += video_ids
-
+    break
 
 np.savez(
         args.outputfile,

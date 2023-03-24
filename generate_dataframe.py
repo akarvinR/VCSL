@@ -9,7 +9,9 @@ parser.add_argument("-path", "--path", help = "Enter data path")
 args = parser.parse_args()
 dict_ = {'uuid' : [], 'path' : [], 'frame_count': []}
 path = args.path
-
+"""
+ python3 --outputfile ../data/test/query/query.csv --path ../data/test/query 
+"""
 for filename in os.listdir(path):
 
     if os.path.isdir(os.path.join(path,filename)):
