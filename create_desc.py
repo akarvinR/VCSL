@@ -54,14 +54,15 @@ for batch_data in loader:
 
     print(i)
     i += len(video_ids)
-    images = torch.Tensor(list(images)) 
+    images = np.array(images)
+    images = torch.Tensor(images) 
     images = images.cuda()
 
     y = model(images)
 
     query_desc += y.tolist()
     qry_video_ids += video_ids
-    break
+
 
 np.savez(
         args.outputfile,
